@@ -4,7 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const indexRouter = require('./routes/index');
-
+require('dotenv').config()
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URL)
 var app = express();
 
 // view engine setup

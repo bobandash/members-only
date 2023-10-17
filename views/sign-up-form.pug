@@ -1,13 +1,21 @@
 extends layout 
 
 block content 
-  form(action="") 
+  form(action="/" method = "POST") 
     label(for="full-name") Name:
-    input(type="text" name="full-name" id="full-name" required)
+    if errors && errors["full-name"]
+      span.error #{errors["full-name"].msg}
+    input(type="text" name="full-name" id="full-name" autocomplete="off")
     label(for="email") Email:
-    input(type="email" name="email" id="email" required)
+    if errors && errors.email
+      span.error #{errors.email.msg}
+    input(type="email" name="email" id="email" autocomplete="off")
     label(for="password") Password:
-    input(type="text" name="password" id="password" required)
-    label(for="password") Confirm Password:
-    input(type="text" name="password" id="password" required)
+    if errors && errors.password
+      span.error #{errors.password.msg}
+    input(type="password" name="password" id="password" autocomplete="off")
+    label(for="confirm-password") Confirm Password:
+    if errors && errors["confirm-password"]
+      span.error #{errors["confirm-password"].msg}
+    input(type="password" name="confirm-password" id="confirm-password" autocomplete="off")
     button(type="Submit") Sign Up
