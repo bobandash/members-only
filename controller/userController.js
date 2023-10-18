@@ -85,3 +85,20 @@ exports.user_login = [
     }
   }
 ]
+
+exports.user_get_post_privileges = asyncHandler(async(req, res, next) => {
+  if (req.body.riddle === "19"){
+    await User.findByIdAndUpdate(req.user.id, {isMember: true});
+    res.redirect('/');
+  } else {
+    let errorMessage = '';
+    if(req.body.riddle === "21"){
+      errorMessage = 'LOL you actually thought'; 
+    } else {
+      errorMessage = 'Answer is incorrect'; 
+    }
+    res.render('secret-riddle', {
+      errorMessage: errorMessage
+    })
+  }
+})
