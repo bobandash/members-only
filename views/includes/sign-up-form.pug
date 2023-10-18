@@ -1,5 +1,5 @@
-div.form-container
-  form.form(id= "sign-up" class = "hide" action="/sign-up" method = "POST") 
+div.form-container(id= "sign-up" class = "hide")
+  form.form(action="/sign-up" method = "POST") 
     label(for="full-name") Name:
     if errors && errors["full-name"]
       span.error #{errors["full-name"].msg}

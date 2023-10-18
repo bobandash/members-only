@@ -1,5 +1,5 @@
-div.form-container
-  form.form(id="login" class = "hide" action="/login" method = "POST") 
+div.form-container(id="login" class = "hide")
+  form.form(action="/login" method = "POST") 
     label(for="email") Email:
     if errors && errors.email
       span.error #{errors.email.msg}
