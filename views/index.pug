@@ -1,0 +1,37 @@
+extends layout 
+
+
+block content
+  script.
+    function hideAllPopUps(){
+      const displayedElements = Array.from(document.querySelectorAll('.show'));
+      if(displayedElements.length > 0){
+        displayedElements.forEach((elem) => {
+          elem.classList.remove('show');
+          elem.classList.add('hide');
+        })
+      }
+    }
+    function toggleShow(id){
+      hideAllPopUps();
+      const elemToShow = document.getElementById(id);
+      elemToShow.classList.add('show');
+      elemToShow.classList.remove('hide');
+    }
+
+  include includes/new-message-form.pug
+  include includes/log-in-form.pug
+  include includes/sign-up-form.pug
+  include includes/secret-riddle.pug
+  if !currentUser
+    button(onclick = `toggleShow("login")`) Log In
+    button(onclick = `toggleShow("sign-up")`) Sign Up 
+  if currentUser && !currentUser.isMember
+    button(onclick = `toggleShow("secret-riddle")`) Take The Secret Riddle
+  if currentUser && currentUser.isMember
+    h1.greeting Welcome #{currentUser.name}
+    button(onclick = `toggle("new-message-form")`) Write Post
+    button Log Out
+    include messageboard.pug
+  
+
