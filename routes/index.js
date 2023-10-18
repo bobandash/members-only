@@ -5,16 +5,8 @@ const passport = require('passport');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('sign-up-form');
+  res.render('index');
 });
-
-router.get('/login', function(req, res, next) {
-  res.render('log-in-form');
-});
-
-router.get('/secret-riddle', function(req, res, next) {
-  res.render('secret-riddle');
-})
 
 router.post('/', userController.user_create)
 router.post('/login', userController.user_login);
