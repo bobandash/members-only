@@ -6,12 +6,19 @@ var logger = require('morgan');
 const indexRouter = require('./routes/index');
 require('dotenv').config()
 const mongoose = require('mongoose');
+const session = require("express-session");
+const passport = require("passport");
 mongoose.connect(process.env.MONGODB_URL)
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+require('./config/passport.config')
+app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(logger('dev'));
 app.use(express.json());

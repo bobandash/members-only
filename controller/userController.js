@@ -2,6 +2,7 @@ const {body, validationResult} = require('express-validator');
 const asyncHandler = require('express-async-handler')
 const bcrypt = require('bcryptjs')
 const User = require('../models/user.js')
+const passport = require('passport');
 
 async function emailExists(email){
   const existingUser = await User.findOne({email: email});
@@ -57,4 +58,31 @@ exports.user_create = [
       })
     }
   })
+]
+
+exports.user_login = [
+  body('email')
+    .trim()
+    .notEmpty()
+    .withMessage('Email cannot be empty')
+    .isEmail()
+    .withMessage('Must be a valid email'),
+  body('password')
+    .trim()
+    .notEmpty()
+    .withMessage('Password cannot be empty'),
+  (req, res, next) => {
+    const errors = validationResult(req).mapped();
+    if(Object.keys(errors).length > 0) {
+      res.render('log-in-form', {
+        errors: errors
+      })
+    }
+    else {
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/'
+      })(req, res, next);
+    }
+  }
 ]
