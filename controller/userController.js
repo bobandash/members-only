@@ -47,15 +47,14 @@ exports.user_create = [
       })
     }
     else {
-      bcrypt.hash(req.body.password, 10, async (err, hashedPassword) => {
-        const newUser = new User({
-          name: req.body["full-name"],
-          email: req.body.email,
-          password: hashedPassword
-        })
-        await newUser.save();
-        res.redirect('/');
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const newUser = new User({
+        name: req.body["full-name"],
+        email: req.body.email,
+        password: hashedPassword
       })
+      await newUser.save();
+      res.redirect('/');
     }
   })
 ]
