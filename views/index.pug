@@ -39,7 +39,19 @@ block content
     .container 
       h1.greeting Welcome #{currentUser.name}
       include messageboards/anonymousMessageboard.pug
-  if currentUser && currentUser.isMember
+  if currentUser && currentUser.isMember && !currentUser.isAdmin
+    header.header
+      .header-container
+        h1 Ins
+          a.secret(href = "/secret-route") i
+          span der Society 
+        .buttons-container
+          button(onclick = `writePost()`) Write Post
+          button(onclick = `logout()`) Log Out
+    .container
+      h1.greeting Welcome #{currentUser.name}.
+      include messageboards/messageBoard.pug
+  if currentuser && currentUser.isAdmin 
     header.header
       .header-container
         h1 Insider Society 
@@ -47,7 +59,8 @@ block content
           button(onclick = `writePost()`) Write Post
           button(onclick = `logout()`) Log Out
     .container
-      h1.greeting Welcome #{currentUser.name}.
+      h1.greeting Welcome Admin #{currentUser.name}.
       include messageboards/messageBoard.pug
+
 
 

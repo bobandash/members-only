@@ -144,6 +144,11 @@ button[type="submit"]:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
+.secret {
+  text-decoration: none;
+  color: black;
+}
+
 .header-container {
   display: flex;
   width: 90%;

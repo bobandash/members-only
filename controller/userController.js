@@ -102,3 +102,18 @@ exports.user_get_post_privileges = asyncHandler(async(req, res, next) => {
     })
   }
 })
+
+exports.user_get_delete_priviledges = asyncHandler(async(req, res, next) => {
+  if (req.body.riddle === "1"){
+    await User.findByIdAndUpdate(req.user.id, {isAdmin: true});
+    res.redirect('/');
+  } else {
+    let errorMessage = '';
+    if(req.body.riddle != "21"){
+      errorMessage = 'Answer is incorrect'; 
+    }
+    res.render('secret-route', {
+      errorMessage: errorMessage
+    })
+  }
+})

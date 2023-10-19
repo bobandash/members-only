@@ -39,9 +39,18 @@ router.get('/secret-riddle', function(req, res, next) {
   res.render('secret-riddle');
 })
 
+router.get('/secret-route', function(req,res, next) {
+  if(req.user){
+    res.render('secret-route');
+  } else {
+    res.redirect('/');
+  }
+})
+
 router.post('/signup', userController.user_create)
 router.post('/login', userController.user_login);
 router.post('/secret-riddle', userController.user_get_post_privileges)
 router.post('/write-post', messageController.write_post)
+router.post('/secret-route',userController.user_get_delete_priviledges)
 
 module.exports = router;
