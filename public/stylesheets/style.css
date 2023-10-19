@@ -48,7 +48,7 @@ body, html {
 }
 
 .form-container {
-  background-color: #e6e6fa;
+  background: url(../images/login-bg.jpg);
 }
 
 .form {
@@ -83,7 +83,11 @@ body, html {
 }
 
 .form > input, .form > textarea {
-  font-size: 24px;
+  font-size: 22px;
+}
+
+.form > input:focus {
+  outline: 1px solid lightblue;
 }
 
 .form > input, .form > textarea, .form > button[type="submit"] {
@@ -101,7 +105,7 @@ body, html {
 
 .form > button[type="submit"] {
   margin-top: 20px;
-  font-size: 24px;
+  font-size: 22px;
   padding: 6px 0px;
   background-color: #e6e6fa;
 }
@@ -127,10 +131,14 @@ button[type="submit"]:hover {
   font-size: 12px;
 }
 
+.small-text {
+  margin-top: 12px;
+}
+
 @media screen and (min-width: 800px) {
   .form {
     min-width: 40%;
-    aspect-ratio: 1 / 0.8;
+    aspect-ratio: auto;
   }
 
 }
