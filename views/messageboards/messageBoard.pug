@@ -1,0 +1,15 @@
+mixin message(message)
+  .message 
+    .message-wrapper 
+      h1.title= message.title 
+      p.message= message.message
+      div.author-date
+        p.author= message.author 
+        p.date= message.dateFormatted
+
+block content        
+  if messages
+    each message in messages 
+      +message(message)
+
+  

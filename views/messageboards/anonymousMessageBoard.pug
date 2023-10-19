@@ -1,0 +1,11 @@
+mixin anonymousMessage(message)
+  .message 
+    .message-wrapper 
+      h1.title= message.title 
+      p.message= message.message 
+      p.note= "ONLY MEMBERS CAN VIEW NAME AND DATE"
+
+block content 
+  if messages
+    each message in messages
+      +anonymousMessage(message)
