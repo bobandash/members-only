@@ -121,3 +121,42 @@ exports.user_get_delete_priviledges = asyncHandler(async(req, res, next) => {
     })
   }
 })
+
+exports.member_priviledges = function(req, res, next){
+  res.render('secret-riddle');
+}
+
+exports.admin_priviledges = function(req,res, next) {
+  res.render('secret-route');
+}
+
+exports.logout = function(req, res, next) {
+  req.logout((err) => {
+    if(err) {
+      return next(err);
+    }
+    res.redirect('/');
+  });
+}
+
+exports.login_form = function(req, res, next){
+  if (req.session.messages) {
+    res.render('log-in-form', {
+      errorMessage: req.session.messages
+    })
+  } else {
+    res.render('log-in-form');
+  }
+}
+
+exports.signup_form = function(req, res, next){
+  res.render('sign-up-form');
+}
+
+exports.new_message_form = function(req, res, next){
+  if(req.user && req.user.isMember){
+    res.render('new-message-form');
+  } else {
+    res.redirect('403');
+  }
+}
