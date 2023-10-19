@@ -3,47 +3,39 @@ extends layout
 
 block content
   script.
-    function hideAllPopUps(){
-      const displayedElements = Array.from(document.querySelectorAll('.show'));
-      if(displayedElements.length > 0){
-        displayedElements.forEach((elem) => {
-          elem.classList.remove('show');
-          elem.classList.add('hide');
-        })
-      }
-    }
-    function toggleShow(id){
-      hideAllPopUps();
-      const elemToShow = document.getElementById(id);
-      elemToShow.classList.add('show');
-      elemToShow.classList.remove('hide');
-    }
-
     function logout(){
       window.location.href= '/log-out'
     }
+    function login(){
+      window.location.href= '/login'
+    }
+    function signup(){
+      window.location.href= '/signup'
+    }
+    function secretRiddle(){
+      window.location.href = '/secret-riddle'
+    }
+    function writePost(){
+      window.location.href = '/write-post'
+    }
   
   if !currentUser
-    include includes/log-in-form.pug
-    include includes/sign-up-form.pug
     .container
       .buttons-container
-        button(onclick = `toggleShow("login")`) Log In
-        button(onclick = `toggleShow("sign-up")`) Sign Up
+        button(onclick = 'login()') Log In
+        button(onclick = 'signup()') Sign Up
       include messageboards/anonymousMessageboard.pug
   if currentUser && !currentUser.isMember
-    include includes/secret-riddle.pug
     .container 
       .buttons-container
-        button(onclick = `toggleShow("secret-riddle")`) Secret Riddle 
+        button(onclick = `secretRiddle()`) Secret Riddle 
         button(onclick = `logout()`) Log Out
       h1.greeting Welcome #{currentUser.name}
       include messageboards/anonymousMessageboard.pug
   if currentUser && currentUser.isMember
-    include includes/new-message-form.pug
     .container
       .buttons-container
-        button(onclick = `toggleShow("new-message-form")`) Write Post
+        button(onclick = `writePost()`) Write Post
         button(onclick = `logout()`) Log Out
       h1.greeting Welcome #{currentUser.name}
       include messageboards/messageBoard.pug

@@ -12,7 +12,10 @@ mongoose.connect(process.env.MONGODB_URL)
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', [
+  path.join(__dirname, 'views'),
+  path.join(__dirname, 'views/forms/')
+]);
 app.set('view engine', 'pug');
 
 require('./config/passport.config')
