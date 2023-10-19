@@ -1,0 +1,21 @@
+extends ../layout  
+
+block content
+  script.
+    function redirectHome(){
+      window.location.href= '/'
+    }
+  .form-container(id= "edit-message-form")
+    form.form(action="/edit/"+id method = "POST")
+      button.close(type="button" onclick = `redirectHome()`)
+        i.fa-solid.fa-x.fa-lg
+      h1 Edit Message
+      label(for="post-title") Title
+      if errors && errors["post-title"]
+        span.error #{errors["post-title"].msg}
+      input(type="text" name="post-title" id= "post-title" value = title autocomplete = "off")
+      label(for="post-message") Message
+      if errors && errors["post-message"]
+        span.error #{errors["post-message"].msg}
+      textarea(rows = 10 name= "post-message" autocomplete = "off") #{message}
+      button(type="submit") Submit

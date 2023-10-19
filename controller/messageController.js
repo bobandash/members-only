@@ -60,3 +60,56 @@ exports.write_post = [
     }
   })
 ]
+
+exports.delete_message = asyncHandler(async (req, res, next) => {
+  const messageId = req.params.messageId;
+  await Message.findByIdAndRemove(messageId);
+  res.redirect('/');
+})
+
+exports.edit_message_form = asyncHandler(async (req, res, next) => {
+  const messageId = req.params.messageId;
+  const message = await Message.findById(messageId);
+
+  res.render('edit-message-form', {
+    title: he.decode(message.title),
+    message: he.decode(message.message),
+    id: message.id
+  })
+})
+
+exports.submit_message_form =  [
+  body('post-title')
+    .trim()
+    .notEmpty()
+    .withMessage('Post title cannot be empty')
+    .escape(),
+  body('post-message')
+    .trim()
+    .notEmpty()
+    .withMessage('Post message cannot be empty')
+    .escape(),
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req).mapped();
+    const [title, message] = 
+    [
+      req.body["post-title"],
+      req.body["post-message"]
+    ]
+    const messageId = req.params.messageId;
+    if(Object.keys(errors).length > 0) {
+      res.render('edit-message-form', {
+        errors: errors,
+        title: title,
+        message: message,
+        id: messageId
+      })
+    } else {
+      await Message.findByIdAndUpdate(messageId, {
+        title: title,
+        message: message
+      })
+      res.redirect('/')
+    }
+  })
+]

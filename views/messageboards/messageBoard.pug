@@ -8,12 +8,19 @@ mixin message(message)
         p.date= message.dateFormatted
       if currentUser.isAdmin
         .post-buttons 
-          button.delete-button
+          button.delete-button(onclick=`deleteMessage("${message.id}")`)
             i.fa-solid.fa-trash.fa-lg
-          button.edit-button
+          button.edit-button(onclick=`editMessage("${message.id}")`)
             i.fa-solid.fa-pen-to-square.fa-lg
 
-block content        
+block content
+  script.
+    function deleteMessage(messageId){
+      window.location.href= '/delete/'+messageId;
+    }
+    function editMessage(messageId){
+      window.location.href= '/edit/'+messageId;
+    }
   if messages
     each message in messages 
       +message(message)

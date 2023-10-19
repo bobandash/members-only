@@ -52,10 +52,14 @@ router.get('/secret-route', function(req,res, next) {
   }
 })
 
+router.get('/edit/:messageId', messageController.edit_message_form)
+
+router.get('/delete/:messageId', messageController.delete_message)
+
 router.post('/signup', userController.user_create)
 router.post('/login', userController.user_login);
 router.post('/secret-riddle', userController.user_get_post_privileges)
 router.post('/write-post', messageController.write_post)
 router.post('/secret-route',userController.user_get_delete_priviledges)
-
+router.post('/edit/:messageId', messageController.submit_message_form)
 module.exports = router;
