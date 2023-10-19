@@ -1,11 +1,17 @@
 mixin message(message)
   .message-container 
-    .message-wrapper 
+    .message-wrapper
       h1.title= message.title 
       p.message= message.message
       div.author-date
         p.author= message.user.name 
         p.date= message.dateFormatted
+      if currentUser.isAdmin
+        .post-buttons 
+          button.delete-button
+            i.fa-solid.fa-trash.fa-lg
+          button.edit-button
+            i.fa-solid.fa-pen-to-square.fa-lg
 
 block content        
   if messages

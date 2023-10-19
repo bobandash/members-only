@@ -204,6 +204,46 @@ button[type="submit"]:hover {
   font-size: 36px;
 }
 
+.author-date {
+  border-top: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+.author-date > p {
+  font-size: 16px;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.post-buttons button {
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.post-buttons button:hover {
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #FF2E2E;
+}
+
+.delete-button:hover {
+  background-color: #FF5C5C;
+}
+
+.edit-button {
+  background-color: #e6e6fa;
+}
+
+.edit-button:hover {
+  background-color: #f0f0f9;
+}
 
 @media screen and (min-width: 800px) {
   .form {
