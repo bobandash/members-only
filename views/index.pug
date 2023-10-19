@@ -20,10 +20,14 @@ block content
     }
   
   if !currentUser
+    header.header
+      .header-container
+        h1 Insider Society 
+        .buttons-container
+          button(onclick = 'login()') Log In
+          button(onclick = 'signup()') Sign Up
     .container
-      .buttons-container
-        button(onclick = 'login()') Log In
-        button(onclick = 'signup()') Sign Up
+      h2.create-account-message Create an account to get access to all the features.
       include messageboards/anonymousMessageboard.pug
   if currentUser && !currentUser.isMember
     .container 
@@ -33,11 +37,14 @@ block content
       h1.greeting Welcome #{currentUser.name}
       include messageboards/anonymousMessageboard.pug
   if currentUser && currentUser.isMember
+    header.header
+      .header-container
+        h1 Insider Society 
+        .buttons-container
+          button(onclick = `writePost()`) Write Post
+          button(onclick = `logout()`) Log Out
     .container
-      .buttons-container
-        button(onclick = `writePost()`) Write Post
-        button(onclick = `logout()`) Log Out
-      h1.greeting Welcome #{currentUser.name}
+      h1.greeting Welcome #{currentUser.name}.
       include messageboards/messageBoard.pug
 
 
