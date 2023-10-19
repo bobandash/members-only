@@ -8,16 +8,6 @@ body, html {
 }
 
 /* default button styling */
-button {
-  font-size: 24px;
-  padding: 6px 12px;
-  background-color: #e6e6fa;
-}
-
-button:hover {
-  background-color: #f0f0f9;
-  cursor: pointer;
-}
 
 .container {
   box-sizing: border-box;
@@ -37,6 +27,14 @@ button:hover {
 
 .buttons-container button {
   border-radius: 5px;
+  font-size: 24px;
+  padding: 6px 12px;
+  background-color: #e6e6fa
+}
+
+.buttons-container button:hover {
+  background-color: #f0f0f9;
+  cursor: pointer;
 }
 
 /* styling for form */
