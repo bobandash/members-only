@@ -6,7 +6,7 @@ const passport = require('passport');
 
 async function emailExists(email){
   const existingUser = await User.findOne({email: email});
-  if(!existingUser){
+  if(existingUser){
     throw new Error('Email already in use')
   }
   return true;
