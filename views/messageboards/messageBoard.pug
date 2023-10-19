@@ -4,7 +4,7 @@ mixin message(message)
       h1.title= message.title 
       p.message= message.message
       div.author-date
-        p.author= message.author 
+        p.author= message.user.name 
         p.date= message.dateFormatted
 
 block content        
