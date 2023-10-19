@@ -8,9 +8,9 @@ const he = require('he');
 exports.index = asyncHandler(async (req, res, next) => {
   let messages;
   if (!req.user) {
-    messages = await Message.find({});
+    messages = await Message.find({}).sort({timeStamp: -1});
   } else {
-    messages = await Message.find({}).populate('user');
+    messages = await Message.find({}).populate('user').sort({timeStamp: -1});
   }
 
   messages.forEach(message => {
