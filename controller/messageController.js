@@ -40,8 +40,13 @@ exports.write_post = [
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req).mapped();
     if(Object.keys(errors).length > 0) {
+      const formValues = {
+        title: req.body["post-title"],
+        message: req.body["post-message"]
+      }
       res.render('new-message-form', {
-        errors: errors
+        errors: errors,
+        formValues: formValues
       })
     } else {
       const user = req.user;

@@ -12,9 +12,9 @@ block content
       label(for="post-title") Title
       if errors && errors["post-title"]
         span.error #{errors["post-title"].msg}
-      input(type="text" name="post-title" id= "post-title")
+      input(type="text" name="post-title" id= "post-title" value = (formValue && formValue.title ? formValue.title : '') autocomplete = "off")
       label(for="post-message") Message
       if errors && errors["post-message"]
         span.error #{errors["post-message"].msg}
-      textarea(rows = 10 name= "post-message")
+      textarea(rows = 10 name= "post-message" value = (formValue && formValue.message ? formValue.message : '') autocomplete = "off")
       button(type="submit") Submit
