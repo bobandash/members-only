@@ -9,7 +9,6 @@ block content
     form.form(action="/signup" method = "POST")
       button.close(type="button" onclick = `redirectHome()`)
         i.fa-solid.fa-x.fa-lg
-      h1 Sign Up 
       label(for="full-name") Name:
       if errors && errors["full-name"]
         span.error #{errors["full-name"].msg}
@@ -26,4 +25,4 @@ block content
       if errors && errors["confirm-password"]
         span.error #{errors["confirm-password"].msg}
       input(type="password" name="confirm-password" id="confirm-password" autocomplete="off")
-      button(type="Submit") Submit
+      button(type="Submit") Sign Up

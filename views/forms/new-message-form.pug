@@ -9,7 +9,6 @@ block content
     form.form(action="/write-post" method = "POST")
       button.close(type="button" onclick = `redirectHome()`)
         i.fa-solid.fa-x.fa-lg
-      h1 Create Post
       label(for="post-title") Title
       if errors && errors["post-title"]
         span.error #{errors["post-title"].msg}

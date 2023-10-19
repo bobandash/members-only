@@ -9,7 +9,6 @@ block content
     form.form(action="/login" method = "POST")
       button.close(type="button" onclick = `redirectHome()`)
         i.fa-solid.fa-x.fa-lg
-      h1 Log In
       label(for="email") Email:
       input(type="email" name="email" id="email" autocomplete="off")
       if errors && errors.email
@@ -18,4 +17,6 @@ block content
       input(type="password" name="password" id="password" autocomplete="off")
       if errors && errors.password
         span.error #{errors.password.msg}
-      button(type="Submit") Submit
+      button(type="Submit") Log In
+      span.small-text Don't have an account? 
+        a(href="/signup") Sign Up 
