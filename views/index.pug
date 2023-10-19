@@ -30,10 +30,13 @@ block content
       h2.create-account-message Create an account to get access to all the features.
       include messageboards/anonymousMessageboard.pug
   if currentUser && !currentUser.isMember
+    header.header
+      .header-container
+        h1 Insider Society 
+        .buttons-container
+          button(onclick = `secretRiddle()`) Riddle 
+          button(onclick = `logout()`) Log Out
     .container 
-      .buttons-container
-        button(onclick = `secretRiddle()`) Secret Riddle 
-        button(onclick = `logout()`) Log Out
       h1.greeting Welcome #{currentUser.name}
       include messageboards/anonymousMessageboard.pug
   if currentUser && currentUser.isMember

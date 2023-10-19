@@ -1,6 +1,9 @@
 body, html {
   margin: 0;
-  background-color: #f6f6f6
+  background: url('../images/login-bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 * {
@@ -13,16 +16,16 @@ body, html {
   box-sizing: border-box;
   width: 80%;
   max-width: 1200px;
-  max-height: 100vh;
   margin: 0 auto;
 }
 
 .buttons-container {
   width: fit-content;
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
   gap: 20px;
-  padding-top: 20px;
 }
 
 .buttons-container button {
@@ -49,6 +52,7 @@ body, html {
 
 .form-container {
   background: url(../images/login-bg.jpg);
+  background-size: cover;
 }
 
 .form {
@@ -134,6 +138,67 @@ button[type="submit"]:hover {
 .small-text {
   margin-top: 12px;
 }
+
+.header {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.header-container {
+  display: flex;
+  width: 90%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.create-account-message {
+  color: white;
+  text-align: center;
+  background-color: black;
+  padding: 10px 20px;
+  margin: 30px auto;
+  border-radius: 10px;
+  font-size: 48px;
+}
+
+/* for message board */
+.message-container {
+  width: 100%;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.message-container:nth-child(n+2){
+  margin-top: 20px;
+}
+
+.message-container:last-child {
+  margin-bottom: 40px;
+}
+
+.message-wrapper {
+  margin: 10px 20px;
+}
+
+.title {
+  margin: 0;
+}
+
+.note {
+  border-top: 1px solid black;
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.greeting {
+  color: white;
+  font-size: 36px;
+}
+
 
 @media screen and (min-width: 800px) {
   .form {

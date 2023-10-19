@@ -1,9 +1,13 @@
 mixin anonymousMessage(message)
-  .message 
+  .message-container 
     .message-wrapper 
       h1.title= message.title 
       p.message= message.message 
-      p.note= "ONLY MEMBERS CAN VIEW NAME AND DATE"
+      if currentUser
+        if currentUser.isMember == false
+          p.note= "SOLVE THE RIDDLE TO GAIN PERMISSIONS"
+      else 
+        p.note= "ONLY MEMBERS CAN VIEW NAME AND DATE"
 
 block content 
   if messages
