@@ -1,0 +1,13 @@
+extends layout 
+
+block content 
+  script.
+    function navigateHome(){
+      window.location.href = "/"
+    }
+  .container
+    .absolute-middle
+      h1.error-text 403 ERROR: FORBIDDEN
+      button.nav-home(onclick= `navigateHome()`) Go to Messageboard
+
+  

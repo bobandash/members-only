@@ -4,14 +4,37 @@ const userController = require('../controller/userController');
 const messageController = require('../controller/messageController');
 
 /* GET home page. */
-router.get('/', messageController.index);
 
-
-router.get('/login', function(req, res, next){
+function redirectHomeUserSignedIn(req, res, next){
   if(req.user){
-    res.send("You are already signed in");
+    res.redirect('/');
+  } else {
+    next();
   }
-  else if (req.session.messages) {
+}
+
+function redirectHomeUserIsMember(req, res, next){
+  if(req.user && req.user.isMember){
+    res.redirect('/');
+  } else {
+    next();
+  }
+}
+
+function redirectHomeUserIsAdmin(req, res, next){
+  if(req.user && req.user.isAdmin){
+    res.redirect('/');
+  } else {
+    next();
+  }
+}
+
+router.get('/', messageController.index);
+router.get('/403', function(req, res, next){
+  res.render('403-page');
+})
+router.get('/login', redirectHomeUserSignedIn, function(req, res, next){
+  if (req.session.messages) {
     res.render('log-in-form', {
       errorMessage: req.session.messages
     })
@@ -19,37 +42,34 @@ router.get('/login', function(req, res, next){
     res.render('log-in-form');
   }
 })
-router.get('/signup', function(req, res, next){
-  if(req.user){
-    res.send("You are already signed in");
-  } else {
-    res.render('sign-up-form');
-  }
+
+router.get('/signup', redirectHomeUserSignedIn, function(req, res, next){
+  res.render('sign-up-form');
 })
+
 router.get('/write-post', function(req, res, next){
-  res.render('new-message-form');
+  if(req.user && req.user.isMember){
+    res.render('new-message-form');
+  } else {
+    res.redirect('403');
+  }
 })
 
 router.get('/log-out', function(req, res, next) {
   req.logout((err) => {
     if(err) {
-      // TO-DO: google what this means
       return next(err);
     }
     res.redirect('/');
   });
 })
 
-router.get('/secret-riddle', function(req, res, next) {
+router.get('/secret-riddle', redirectHomeUserIsMember, function(req, res, next){
   res.render('secret-riddle');
 })
 
-router.get('/secret-route', function(req,res, next) {
-  if(req.user){
-    res.render('secret-route');
-  } else {
-    res.redirect('/');
-  }
+router.get('/secret-route', redirectHomeUserIsAdmin, function(req,res, next) {
+  res.render('secret-route');
 })
 
 router.get('/edit/:messageId', messageController.edit_message_form)
