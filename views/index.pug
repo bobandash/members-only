@@ -19,19 +19,21 @@ block content
       elemToShow.classList.remove('hide');
     }
   
-  if !currentUser
-    include includes/log-in-form.pug
-    include includes/sign-up-form.pug
-    button(onclick = `toggleShow("login")`) Log In
-    button(onclick = `toggleShow("sign-up")`) Sign Up 
-  if currentUser && !currentUser.isMember
-    button(onclick = `toggleShow("secret-riddle")`) Take The Secret Riddle
-    include includes/secret-riddle.pug
-  if currentUser && currentUser.isMember
-    include includes/new-message-form.pug
-    h1.greeting Welcome #{currentUser.name}
-    button(onclick = `toggle("new-message-form")`) Write Post
-    button Log Out
-    include messageboard.pug
+  .container
+    if !currentUser
+      include includes/log-in-form.pug
+      include includes/sign-up-form.pug
+      button(onclick = `toggleShow("login")`) Log In
+      button(onclick = `toggleShow("sign-up")`) Sign Up 
+    if currentUser && !currentUser.isMember
+      button(onclick = `toggleShow("secret-riddle")`) Take The Secret Riddle
+      include includes/secret-riddle.pug
+    if currentUser && currentUser.isMember
+      include includes/new-message-form.pug
+      .buttons-container
+        button(onclick = `toggle("new-message-form")`) Write Post
+        button Log Out
+      h1.greeting Welcome #{currentUser.name}
+      include messageboard.pug
   
 
