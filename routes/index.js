@@ -10,6 +10,11 @@ router.get('/', messageController.index);
 router.get('/login', function(req, res, next){
   if(req.user){
     res.send("You are already signed in");
+  }
+  else if (req.session.messages) {
+    res.render('log-in-form', {
+      errorMessage: req.session.messages
+    })
   } else {
     res.render('log-in-form');
   }

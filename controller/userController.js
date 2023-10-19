@@ -54,7 +54,10 @@ exports.user_create = [
         password: hashedPassword
       })
       await newUser.save();
-      res.redirect('/');
+      passport.authenticate('local', {
+        successRedirect: '/',
+        failureRedirect: '/',
+      })(req, res, next);
     }
   })
 ]
@@ -80,7 +83,8 @@ exports.user_login = [
     else {
       passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/'
+        failureRedirect: '/login',
+        failureMessage: 'Login Credientials do not match'
       })(req, res, next);
     }
   }
