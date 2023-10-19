@@ -2,17 +2,24 @@ var express = require('express');
 var router = express.Router();
 const userController = require('../controller/userController');
 const messageController = require('../controller/messageController');
-const passport = require('passport');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index');
-});
+router.get('/', messageController.index);
+
+
 router.get('/login', function(req, res, next){
-  res.render('log-in-form');
+  if(req.user){
+    res.send("You are already signed in");
+  } else {
+    res.render('log-in-form');
+  }
 })
 router.get('/signup', function(req, res, next){
-  res.render('sign-up-form');
+  if(req.user){
+    res.send("You are already signed in");
+  } else {
+    res.render('sign-up-form');
+  }
 })
 router.get('/write-post', function(req, res, next){
   res.render('new-message-form');
@@ -26,6 +33,10 @@ router.get('/log-out', function(req, res, next) {
     }
     res.redirect('/');
   });
+})
+
+router.get('/secret-riddle', function(req, res, next) {
+  res.render('secret-riddle');
 })
 
 router.post('/signup', userController.user_create)
