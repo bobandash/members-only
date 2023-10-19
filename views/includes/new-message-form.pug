@@ -1,5 +1,8 @@
 .form-container(id= "new-message-form" class = "hide")
-  form.form(action="") 
+  form.form(action="")
+    button.close(type="button" onclick = `hideAllPopUps()`)
+      i.fa-solid.fa-x.fa-lg
+    h1 Create Message
     label(for="post-title") Post
     input(type="text" name="post-title" id= "post-title")
     label(for="post-message") Message

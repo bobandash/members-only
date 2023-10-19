@@ -1,5 +1,8 @@
 div.form-container(id= "sign-up" class = "hide")
-  form.form(action="/sign-up" method = "POST") 
+  form.form(action="/sign-up" method = "POST")
+    button.close(type="button" onclick = `hideAllPopUps()`)
+      i.fa-solid.fa-x.fa-lg
+    h1 Sign Up 
     label(for="full-name") Name:
     if errors && errors["full-name"]
       span.error #{errors["full-name"].msg}
@@ -16,4 +19,4 @@ div.form-container(id= "sign-up" class = "hide")
     if errors && errors["confirm-password"]
       span.error #{errors["confirm-password"].msg}
     input(type="password" name="confirm-password" id="confirm-password" autocomplete="off")
-    button(type="Submit") Sign Up
+    button(type="Submit") Submit

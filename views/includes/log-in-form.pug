@@ -1,5 +1,8 @@
 div.form-container(id="login" class = "hide")
-  form.form(action="/login" method = "POST") 
+  form.form(action="/login" method = "POST")
+    button.close(type="button" onclick = `hideAllPopUps()`)
+      i.fa-solid.fa-x.fa-lg
+    h1 Log In
     label(for="email") Email:
     if errors && errors.email
       span.error #{errors.email.msg}
@@ -8,4 +11,4 @@ div.form-container(id="login" class = "hide")
     if errors && errors.password
       span.error #{errors.password.msg}
     input(type="password" name="password" id="password" autocomplete="off")
-    button(type="Submit") Log In
+    button(type="Submit") Submit
