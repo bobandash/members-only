@@ -1,11 +1,45 @@
 body, html {
   margin: 0;
+  background-color: #f6f6f6
 }
 
 * {
   box-sizing: border-box;
 }
 
+/* default button styling */
+button {
+  font-size: 24px;
+  padding: 6px 12px;
+  background-color: #e6e6fa;
+}
+
+button:hover {
+  background-color: #f0f0f9;
+  cursor: pointer;
+}
+
+.container {
+  box-sizing: border-box;
+  width: 80%;
+  max-width: 1200px;
+  max-height: 100vh;
+  margin: 0 auto;
+}
+
+.buttons-container {
+  width: fit-content;
+  display: flex;
+  margin-left: auto;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.buttons-container button {
+  border-radius: 5px;
+}
+
+/* styling for form */
 .form-container {
   position: absolute;
   width: 100vw;
@@ -15,7 +49,6 @@ body, html {
   align-items: center;
 }
 
-/* styling for form */
 .form-container {
   background-color: #e6e6fa;
 }
