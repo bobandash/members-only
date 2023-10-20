@@ -4,7 +4,7 @@ A simple messageboard in which, if the user isn't logged in, the posts are anony
 
 ## Demo:
 // TO-DO: PUT IMAGE
-Live View: // TO-DO: PUT DEPLOYMENT
+Live View: https://brucecreates-membersonly.fly.dev/
 
 ## Technologies Used:
 Backend:
@@ -29,3 +29,4 @@ Backend:
 ## Docs:
 ### To-Do:
 - [ ] Add specific error handling pages for each error type
+- [ ] Create a redirect to home when you click outside the form
