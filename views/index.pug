@@ -28,7 +28,7 @@ block content
           button(onclick = 'signup()') Sign Up
     .container
       h2.create-account-message Create an account to get access to all the features.
-      include messageboards/anonymousMessageboard.pug
+      include messageboards/anonymousMessageBoard.pug
   if currentUser && !currentUser.isMember
     header.header
       .header-container
@@ -38,7 +38,7 @@ block content
           button(onclick = `logout()`) Log Out
     .container 
       h1.greeting Welcome #{currentUser.name}
-      include messageboards/anonymousMessageboard.pug
+      include messageboards/anonymousMessageBoard.pug
   if currentUser && currentUser.isMember && !currentUser.isAdmin
     header.header
       .header-container
