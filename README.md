@@ -10,7 +10,7 @@ Live View: https://brucecreates-membersonly.fly.dev/
 Backend:
 - Node.js / Express
 - MongoDB
-- Templating Language: Pug
+- Pug
 
 ## Concepts Learned:
 - PassportJS and basic user authentication
