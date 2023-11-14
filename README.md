@@ -3,8 +3,10 @@
 A simple messageboard in which, if the user isn't logged in, the posts are anonymous, and if the user is logged in, they can see who wrote the posts and create their own posts. This was done as part of The Odin Project's curriculum: [https://www.theodinproject.com/lessons/nodejs-mini-message-board](https://www.theodinproject.com/lessons/nodejs-members-only).
 
 ## Demo:
-// TO-DO: PUT IMAGE
-Live View: https://brucecreates-membersonly.fly.dev/
+![Screenshot 2023-11-13 180527](https://github.com/bobandash/members-only/assets/74850332/a4a8951d-dcbc-47fe-ade3-c7169da9eb82)
+
+## Live View
+https://brucecreates-membersonly.fly.dev/
 
 ## Technologies Used:
 Backend:
